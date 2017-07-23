@@ -1,0 +1,22 @@
+<!--
+/*
+ * Turiknox_CustomTotal
+
+ * @category   Turiknox
+ * @package    Turiknox_CustomTotal
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-custom-total/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<!-- ko if: isDisplayed() -->
+<tr class="totals custom excl">
+    <th class="mark" scope="row">
+        <span class="label" data-bind="text: title"></span>
+        <span class="value" data-bind="text: getValue()"></span>
+    </th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValue(), attr: {'data-th': title}"></span>
+    </td>
+</tr>
+<!-- /ko -->
