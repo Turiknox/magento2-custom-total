@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\CustomTotal\Model\Total;
 /*
  * Turiknox_CustomTotal
 
@@ -9,6 +8,8 @@ namespace Turiknox\CustomTotal\Model\Total;
  * @license    https://github.com/turiknox/magento2-custom-total/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\CustomTotal\Model\Total;
+
 use Magento\Quote\Model\Quote\Address\Total\AbstractTotal;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
@@ -21,17 +22,17 @@ class Custom extends AbstractTotal
     /**
      * @var CustomTotalHelper
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * Custom constructor.
+     *
      * @param CustomTotalHelper $helper
      */
     public function __construct(
         CustomTotalHelper $helper
-    )
-    {
-        $this->_helper = $helper;
+    ) {
+        $this->helper = $helper;
         $this->setCode('custom');
     }
 
@@ -52,7 +53,7 @@ class Custom extends AbstractTotal
         if (!count($items)) {
             return $this;
         }
-        $amount = $this->_helper->getAmount();
+        $amount = $this->helper->getAmount();
 
         $total->setTotalAmount('custom', $amount);
         $total->setBaseTotalAmount('custom', $amount);
@@ -90,8 +91,8 @@ class Custom extends AbstractTotal
     {
         return [
             'code' => $this->getCode(),
-            'title' => $this->_helper->getTitle(),
-            'value' => $this->_helper->getAmount()
+            'title' => $this->helper->getTitle(),
+            'value' => $this->helper->getAmount()
         ];
     }
 
@@ -100,6 +101,6 @@ class Custom extends AbstractTotal
      */
     public function getLabel()
     {
-        return __($this->_helper->getTitle());
+        return __($this->helper->getTitle());
     }
 }

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\CustomTotal\Helper;
 /*
  * Turiknox_CustomTotal
 
@@ -9,6 +8,8 @@ namespace Turiknox\CustomTotal\Helper;
  * @license    https://github.com/turiknox/magento2-custom-total/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\CustomTotal\Helper;
+
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -24,20 +25,20 @@ class Data extends AbstractHelper
     /**
      * @var ScopeConfigInterface
      */
-    protected $_scopeConfig;
+    protected $scopeConfig;
 
     /**
      * Data constructor.
+     *
      * @param Context $context
      * @param ScopeConfigInterface $scopeInterface
      */
     public function __construct(
         Context $context,
         ScopeConfigInterface $scopeInterface
-    )
-    {
+    ) {
         parent::__construct($context);
-        $this->_scopeConfig = $scopeInterface;
+        $this->scopeConfig = $scopeInterface;
     }
 
     /**
@@ -45,7 +46,7 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->_scopeConfig->getValue(
+        return $this->scopeConfig->getValue(
             self::XML_PATH_CUSTOM_TOTAL_ENABLE,
             ScopeInterface::SCOPE_WEBSITE
         );
@@ -56,7 +57,7 @@ class Data extends AbstractHelper
      */
     public function getTitle()
     {
-        return $this->_scopeConfig->getValue(
+        return $this->scopeConfig->getValue(
             self::XML_PATH_CUSTOM_TOTAL_TITLE,
             ScopeInterface::SCOPE_WEBSITE
         );
@@ -67,7 +68,7 @@ class Data extends AbstractHelper
      */
     public function getAmount()
     {
-        return $this->isEnabled() ? $this->_scopeConfig->getValue(
+        return $this->isEnabled() ? $this->scopeConfig->getValue(
             self::XML_PATH_CUSTOM_TOTAL_AMOUNT,
             ScopeInterface::SCOPE_WEBSITE
         ) : 0;
